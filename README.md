@@ -5,4 +5,4 @@ Example usage
 
     #!/usr/bin/python
     from range import expand
-    print expand("range hostname",range_port,"@range_query")
+    print expand("range_hostname",range_port,"@range_query")
