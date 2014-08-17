@@ -4,6 +4,8 @@
 #  #!/usr/bin/python
 #  from range import expand
 #  print expand("range hostname",9999,"@range_query")
+#
+# requires python-requests module
 
 
 import os,sys,socket
