@@ -4,8 +4,6 @@
 #  #!/usr/bin/python
 #  from range import expand
 #  print expand("range hostname",9999,"@range_query")
-#
-# requires python-requests module
 
 
 import os,sys,socket
@@ -13,25 +11,25 @@ import requests
 
 def expand(host,port,range_query):
   rport = 9999   # range port is set to 9999 by default
-  if host is not None:
+  if host:
     rhost = host
-  elif resolv_hostname("range") is not None:
+  elif resolv_hostname("range"):
     rhost = "range"
   else:
     rhost = get_environ_host()
 
-  if port is not None:
+  if port:
     rport = port
   else:
     rport = get_environ_port()
 
-  if range_query is not None:
+  if range_query:
     rquery = range_query
   else:  
     print "Range query is empty..exiting.."
     sys.exit()
 
-  uri = 'http://%s:%d/range/list?%s' % (host, port, rquery)
+  uri = 'http://%s:%d/range/list?%s' % (rhost, rport, rquery)
   try:
     result = requests.get(uri)
   except:
@@ -42,7 +40,7 @@ def expand(host,port,range_query):
 #  print sorted(result.content.splitlines()) 
 
 def get_environ_host():
-  if os.getenv('RANGE_HOST') is not None:
+  if os.getenv('RANGE_HOST'):
     range_host = os.getenv('RANGE_HOST')
     return range_host
   else:
