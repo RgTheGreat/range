@@ -34,7 +34,6 @@ def expand(host,port,range_query):
     result = requests.get(uri)
   except:
     print "A error occurred while quering..exiting"
-    print e
     sys.exit()
   return result.content 
 #  print sorted(result.content.splitlines()) 
